@@ -1,36 +1,30 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <h1>Estatus de la camioneta</h1>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
+  <form class="container p-5">
+    <h1>Piezas Dañadas</h1>
 <style>
     .btn_agregarruta{
         float:right;
     }
 </style>
-<br>
-<div class="col-md-3 mb-3">
-  <label for="validationCustom05">Revision de la gasolina</label>
-  </div>
-<button type="button" class="btn btn-warning">Adjuntar archivo</button>
+<BR>
 <br>
 <br>
 <br>
+<select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+  <option selected>Seleccione la pieza que se encuentra dañada</option>
+  <option value="1">Acrílicos</option>
+  <option value="2">Botones</option>
+  <option value="3">Monedero</option>
+  <option value="3">Pantalla</option>
+  <option value="4">Siguientes opciones......</option>
+</select>
 <br>
-<div class="col-md-3 mb-3">
-  <label for="validationCustom05">Kilometraje</label>
-  </div>
-<button type="button" class="btn btn-warning">Adjuntar archivo</button>
 <br>
-<br>
-<br>
-<br>
-<div class="col-md-3 mb-3">
-  <label for="validationCustom05">Gastos</label>
-  </div>
-<button type="button" class="btn btn-warning">Adjuntar archivo</button>
 <br>
 <br>
 <br>
@@ -42,16 +36,10 @@
 <br>
 <br>
 <br>
-<div class="col-md-3 mb-3">
-  <label for="validationCustom05">Estatus del vehiculo</label>
-  </div>
-<button type="button" class="btn btn-warning">Adjuntar archivo</button>
-<br>
-<br>
-<br>
 <div class="col text-center">
 <button type="button" class="btn btn-warning btn-lg">Continuar</button>
 </div>
+</form>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
   </html>
