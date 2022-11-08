@@ -1,46 +1,38 @@
 <?php
-$enlace = mysqli_connect("127.0.0.1", "root", "", "juegossorteos");
-
-if (!$enlace) {
-    echo "Error: No se pudo conectar a MySQL." . PHP_EOL;
-    echo "errno de depuración: " . mysqli_connect_errno() . PHP_EOL;
-    echo "error de depuración: " . mysqli_connect_error() . PHP_EOL;
-    exit;
-}
-
-echo "Éxito: Se realizó una conexión apropiada a MySQL! La base de datos juegossorteos es genial." . PHP_EOL;
-echo "Información del host: " . mysqli_get_host_info($enlace) . PHP_EOL;
-
-mysqli_close($enlace);
-
-# Las claves de acceso, ahorita las ponemos aquí
-# y en otro ejercicio las ponemos en una base de datos
-$usuario_correcto = "usuario1@hotmail.com";
-$palabra_secreta_correcta = "contraseña2";
-/*
-Para leer los datos que fueron enviados al formulario,
-accedemos al arreglo superglobal llamado $_POST en PHP, y
-para obtener un valor accedemos a $_POST["clave"] en donde
-clave es el "name" que le dimos al input
-*/
-# Nota: no estamos haciendo validaciones
-$usuario = $_POST["usuario"];
-$palabra_secreta = $_POST["palabra_secreta"];
-# Luego de haber obtenido los valores, ya podemos comprobar:
-if ($usuario === $usuario_correcto && $palabra_secreta === $palabra_secreta_correcta) {
-    # Significa que coinciden, así que vamos a guardar algo
-    # en el arreglo superglobal $_SESSION, ya que ese arreglo
-    # "persiste" a través de todas las páginas
-    # Iniciar sesión para poder usar el arreglo
-    session_start();
-    # Y guardar un valor que nos pueda decir si el usuario
-    # ya ha iniciado sesión o no. En este caso es el nombre
-    # de usuario
-    $_SESSION["usuario"] = $usuario;
-    # Luego redireccionamos a la página "Secreta"
-    header("Location: secreta.php");
-} else {
-    # No coinciden, así que simplemente imprimimos un
-    # mensaje diciendo que es incorrecto
-    echo "El usuario o la contraseña son incorrectos";
-}
+  session_start();
+   
+  // Obtengo los datos cargados en el formulario de login.
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+   
+  // Datos para conectar a la base de datos.
+  $nombreServidor = "localhost";
+  $nombreUsuario = "root";
+  $passwordBaseDeDatos = "";
+  $nombreBaseDeDatos = "juegossorteos2";
+  
+  // Crear conexión con la base de datos.
+  $conn = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
+   
+  // Validar la conexión de base de datos.
+  if ($conn ->connect_error) {
+    die("Connection failed: " . $conn ->connect_error);
+  }
+   
+  // Consulta segura para evitar inyecciones SQL.
+  $sql = sprintf("SELECT * FROM usuario WHERE usuario='%s' AND contra = %s", mysql_real_escape_string($email), mysql_real_escape_string($password));
+  $resultado = $conn->query($sql);
+   
+  // Verificando si el usuario existe en la base de datos.
+  if($resultado){
+    // Guardo en la sesión el email del usuario.
+    $_SESSION['email'] = $email;
+     
+    // Redirecciono al usuario a la página principal del sitio.
+    header("HTTP/1.1 302 Moved Temporarily"); 
+    header("Location: principal.php"); 
+  }else{
+    echo 'El email o password es incorrecto, <a href="index.html">vuelva a intenarlo</a>.<br/>';
+  }
+ 
+?>
