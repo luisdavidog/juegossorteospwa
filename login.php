@@ -13,15 +13,14 @@
   
   // Crear conexión con la base de datos.
   $conn = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-   
   // Validar la conexión de base de datos.
   if ($conn ->connect_error) {
     die("Connection failed: " . $conn ->connect_error);
   }
    
   // Consulta segura para evitar inyecciones SQL.
-  $sql = sprintf("SELECT * FROM usuario WHERE usuario='%s' AND contra = %s", mysql_real_escape_string($email), mysql_real_escape_string($password));
-  $resultado = $conn->query($sql);
+  $sql = "SELECT id FROM usuario WHERE usuario = '$email' and contra = '$password'";
+  $resultado = mysqli_query($conn,$sql);
    
   // Verificando si el usuario existe en la base de datos.
   if($resultado){
@@ -29,8 +28,7 @@
     $_SESSION['email'] = $email;
      
     // Redirecciono al usuario a la página principal del sitio.
-    header("HTTP/1.1 302 Moved Temporarily"); 
-    header("Location: principal.php"); 
+    header("Location: trabajadores/Principal"); 
   }else{
     echo 'El email o password es incorrecto, <a href="index.html">vuelva a intenarlo</a>.<br/>';
   }
