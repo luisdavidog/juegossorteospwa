@@ -1,3 +1,7 @@
+<?php
+require('../db.php');
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -27,11 +31,29 @@
         <div class="mb-3">
           <input type="text" class="form-control" id="Telefono" placeholder="Telefono" name="Telefono">
         </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="TipoUsuarioID" placeholder="Tipo de usuario" name="TipoUsuarioID">
+        <div class="mb-3 form-floating">
+        <select class="form-select" name="TipoUsuarioID" style="width: 100%;">
+        <option value="0">Seleccione rol de usuario:</option>
+        <?php
+          $querytu = "SELECT * FROM tipo_usuario";
+          $restu = $con->query($querytu);
+          while ($valorestu = $restu->fetch_assoc()) {
+            echo '<option value="'.$valorestu['idTipoUsuario'].'">'.$valorestu['DescTipo'].'</option>';
+          }
+        ?>
+      </select>
         </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="MunicipioID" placeholder="Municipio" name="MunicipioID">
+        <div class="mb-3 form-floating">
+        <select class="form-select" name="MunicipioID" style="width: 100%;">
+        <option value="0">Municipio:</option>
+        <?php
+          $query = "SELECT * FROM municipio";
+          $res = $con->query($query);
+          while ($valores = $res->fetch_assoc()) {
+            echo '<option value="'.$valores['idMunicipio'].'">'.$valores['Municipio'].'</option>';
+          }
+        ?>
+      </select>
         </div>
         <div class="mb-3">
           <input type="text" class="form-control" id="usuario" placeholder="Correo Electronico" name="usuario">
