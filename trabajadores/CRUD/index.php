@@ -1,3 +1,6 @@
+<?php                
+require('../../db.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +14,19 @@
     <div class="container my-5">
         <h2>Tiendas</h2>
         <a class="btn btn-primary" href="/juegossorteospwa/trabajadores/CRUD/create.php" role="button">Nueva tienda</a>
+        <form action="index.php" method="post">
+        <select name="municipio">
+        <option value="0">Seleccione:</option>
+        <?php
+          $query = "SELECT * FROM municipio";
+          $res = $con->query($query);
+          while ($valores = $res->fetch_assoc()) {
+            echo '<option value="'.$valores['idMunicipio'].'">'.$valores['Municipio'].'</option>';
+          }
+        ?>
+      </select>
+      <input type="submit" value="Buscar" class="btn btn-primary"/>
+      </form>
         <br>
         <table class="table">
             <thead>
@@ -27,19 +43,13 @@
             </thead>
             <tbody>
                 <?php
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $database = "juegossorteos2";
+                global $municipio;
+                $municipio = $_POST['municipio'];
 
-                $connection = new mysqli($servername, $username, $password, $database);
-
-                if ($connection->connect_error) {
-                    die("Connection failed: " . $connection->connect_error);
-                }
-
-                $sql = "SELECT * FROM tienda";
-                $result = $connection->query($sql);
+                if (isset($_POST['municipio'])) {
+                echo 'prueba:'.$municipio;
+                $sql = "SELECT * FROM tienda where idTienda = $municipio";
+                $result = $con->query($sql);
 
                 if (!$result) {
                     die("Invalid query: " . $connect->error);
@@ -62,6 +72,9 @@
                     </tr>
                     ";
                 }
+                  }
+
+                
                 ?>
             </tbody>
         </table>

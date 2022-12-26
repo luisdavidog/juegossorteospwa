@@ -13,6 +13,6 @@ if(isset($_GET["idTienda"])){
     $connection->query($sql);
 }
 
-header("location: /juegossorteospwa/trabajadores/CRUD/index.php");
+header("location: index.php");
 exit;
 ?>

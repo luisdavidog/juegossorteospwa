@@ -47,7 +47,7 @@ if ( $_SERVER['REQUEST_METHOD'] == 'POST' ){
 
         $SuccessMessage = "Tienda agregada correctamente";
 
-        header("location: /juegossorteospwa/trabajadores/CRUD/index.php");
+        header("location: index.php");
         exit;
     } while(false);
 }

@@ -1,11 +1,20 @@
+<?php
+//include auth_session.php file on all user panel pages
+include("../../auth_session.php");
+?>
+<!DOCTYPE html>
+
+<html>
 <head>
+  <title>Principal</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 <body>
-  <form class="container p-5"></form>
+  <form class="container p-5">
   <div class="col text-center">
+  <p>Hola, <?php echo $_SESSION['usuario']; ?>!</p>
   <h1>Inicio de ruta</h1>
   <br>
 <h1>Seleccione una de las siguientes opciones</h1>

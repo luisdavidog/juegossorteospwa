@@ -27,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     $row = $result->fetch_assoc();
 
     if(!$row){
-        header("location: /juegossorteospwa/trabajadores/CRUD/index.php");
+        header("location: index.php");
         exit;
     }
 

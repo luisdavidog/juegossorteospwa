@@ -1,36 +1,31 @@
 <?php
+  require('db.php');
   session_start();
    
-  // Obtengo los datos cargados en el formulario de login.
-  $email = $_POST['email'];
-  $password = $_POST['password'];
-   
-  // Datos para conectar a la base de datos.
-  $nombreServidor = "localhost";
-  $nombreUsuario = "root";
-  $passwordBaseDeDatos = "";
-  $nombreBaseDeDatos = "juegossorteos2";
-  
-  // Crear conexión con la base de datos.
-  $conn = new mysqli($nombreServidor, $nombreUsuario, $passwordBaseDeDatos, $nombreBaseDeDatos);
-  // Validar la conexión de base de datos.
-  if ($conn ->connect_error) {
-    die("Connection failed: " . $conn ->connect_error);
-  }
-   
-  // Consulta segura para evitar inyecciones SQL.
-  $sql = "SELECT id FROM usuario WHERE usuario = '$email' and contra = '$password'";
-  $resultado = mysqli_query($conn,$sql);
+  if (isset($_POST['usuario'])) {
+    $username = stripslashes($_REQUEST['usuario']);    // removes backslashes
+    $username = mysqli_real_escape_string($con, $username);
+    $password = stripslashes($_REQUEST['contra']);
+    $password = mysqli_real_escape_string($con, $password);
+    // Check user is exist in the database
+    $query    = "SELECT * FROM `usuario` WHERE usuario='$username'
+                 AND contra='" . md5($password) . "'";
+    $result = mysqli_query($con, $query);
+    $rows = mysqli_num_rows($result);
    
   // Verificando si el usuario existe en la base de datos.
-  if($resultado){
+  if($rows == 1){
     // Guardo en la sesión el email del usuario.
-    $_SESSION['email'] = $email;
+    $_SESSION['usuario'] = $username;
      
     // Redirecciono al usuario a la página principal del sitio.
-    header("Location: trabajadores/Principal"); 
+    echo '<script type ="text/JavaScript">';  
+          echo 'alert("Login Exitoso")';  
+          echo '</script>';
+          echo '<div class="fs-1">Reedirigiendo...</div>';
+    header("refresh:3;url=trabajadores/Principal");
   }else{
     echo 'El email o password es incorrecto, <a href="index.html">vuelva a intenarlo</a>.<br/>';
   }
- 
+}
 ?>
