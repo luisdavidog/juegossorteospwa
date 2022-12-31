@@ -12,11 +12,12 @@
     require('db.php');
     session_start();
     // When form submitted, check and create user session.
+    $username = stripslashes($_REQUEST['usuario']);    // removes backslashes
+    $username = mysqli_real_escape_string($con, $username);
+    $password = stripslashes($_REQUEST['contra']);
+    $password = mysqli_real_escape_string($con, $password);
+
     if (isset($_POST['usuario'])) {
-        $username = stripslashes($_REQUEST['usuario']);    // removes backslashes
-        $username = mysqli_real_escape_string($con, $username);
-        $password = stripslashes($_REQUEST['contra']);
-        $password = mysqli_real_escape_string($con, $password);
         // Check user is exist in the database
         $query    = "SELECT * FROM `usuario` WHERE usuario='$username'
                      AND contra='" . md5($password) . "'";

@@ -1,5 +1,5 @@
 <?php
-require 'db.php';
+require('../db.php');
 ?>
 <!doctype html>
 <html lang="en">

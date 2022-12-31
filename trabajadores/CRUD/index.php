@@ -66,9 +66,10 @@ require('../../db.php');
                         <td>$row[Direccion]</td>
                         <td>$row[Telefono]</td>
                         <td>
-                            <a class='btn btn-primary btn-sm' href='/juegossorteospwa/trabajadores/CRUD/edit.php?idTienda=$row[idTienda]'>Editar</a>
-                            <a class='btn btn-primary btn-sm' href='/juegossorteospwa/trabajadores/CRUD/delete.php?idTienda=$row[idTienda]'>Eliminar</a>
-                        </td>
+                            <a class='btn btn-primary btn-sm' href='../CRUD/edit.php?idTienda=$row[idTienda]'>Editar</a>
+                            <a class='btn btn-primary btn-sm' href='../CRUD/delete.php?idTienda=$row[idTienda]'>Eliminar</a>
+                            <a class='btn btn-warning btn-sm' href='../CorteDistribucion/index.html'>Corte</a>
+                            </td>
                     </tr>
                     ";
                 }
