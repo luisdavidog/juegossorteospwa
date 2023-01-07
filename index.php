@@ -14,13 +14,13 @@
     // When form submitted, check and create user session.
     $username = stripslashes($_REQUEST['usuario']);    // removes backslashes
     $username = mysqli_real_escape_string($con, $username);
-    $password = stripslashes($_REQUEST['contra']);
+    $password = md5($_REQUEST['contra']);
     $password = mysqli_real_escape_string($con, $password);
 
     if (isset($_POST['usuario'])) {
         // Check user is exist in the database
         $query    = "SELECT * FROM `usuario` WHERE usuario='$username'
-                     AND contra='" . md5($password) . "'";
+                     AND contra='$password'";
         $result = mysqli_query($con, $query);
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
