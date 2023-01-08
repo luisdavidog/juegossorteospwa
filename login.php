@@ -3,8 +3,8 @@
   // When form submitted, check and create user session.
   $username = $_POST['usuario'];    // removes backslashes
   $password = md5($_POST['contra']);
-  echo '$usuario';
-  echo '$contra';
+  echo $usuario;
+  echo $contra;
       $query    = "SELECT * FROM `usuario` WHERE usuario='$username'
                    AND contra='$password'";
       $result = mysqli_query($con, $query);
