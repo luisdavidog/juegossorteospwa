@@ -1,17 +1,15 @@
 <?php
   require('db.php');
-  session_start();
   // When form submitted, check and create user session.
-  $username = stripslashes($_REQUEST['usuario']);    // removes backslashes
-  $username = mysqli_real_escape_string($con, $username);
-  $password = md5($_REQUEST['contra']);
-  $password = mysqli_real_escape_string($con, $password);
+  $username = $_POST['usuario'];    // removes backslashes
+  $password = md5($_POST['contra']);
 
       $query    = "SELECT * FROM `usuario` WHERE usuario='$username'
                    AND contra='$password'";
       $result = mysqli_query($con, $query);
       $rows = mysqli_num_rows($result);
       if ($rows == 1) {
+        session_start();
           $_SESSION['usuario'] = $username;
           echo '<script type ="text/JavaScript">';  
         echo 'alert("Login Exitoso")';  
