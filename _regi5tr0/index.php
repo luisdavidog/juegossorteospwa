@@ -32,7 +32,7 @@ require('../db.php');
           <input type="text" class="form-control" id="Telefono" placeholder="Telefono" name="Telefono">
         </div>
         <div class="mb-3 form-floating">
-        <select class="form-select" name="TipoUsuarioID" style="width: 100%;">
+        <select class="form-select" name="TipoUsuarioID" style="width: 100%; padding: 6px; border: #ccc solid 1px; color: #777">
         <option value="0">Seleccione rol de usuario:</option>
         <?php
           $querytu = "SELECT * FROM tipo_usuario";
@@ -44,7 +44,7 @@ require('../db.php');
       </select>
         </div>
         <div class="mb-3 form-floating">
-        <select class="form-select" name="MunicipioID" style="width: 100%;">
+        <select class="form-select" name="MunicipioID" style="width: 100%; padding: 6px; border: #ccc solid 1px; color: #777">
         <option value="0">Municipio:</option>
         <?php
           $query = "SELECT * FROM municipio";
