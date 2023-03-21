@@ -16,7 +16,7 @@ require('../db.php');
         </p>
     </div>
     <div class="container">
-    <form action="RegistrarTienda.php" method="post">
+    <form action="" method="post">
         <div class="mb-3">
           <label for="text" class="form-label">Tienda</label>
           <input type="text" class="form-control" id="Tienda" placeholder="Escriba el nombre de la tienda" name="Tienda">
@@ -33,26 +33,24 @@ require('../db.php');
         ?>
       </select>
         </div>
-        <button type="submit" class="btn btn-primary">Registrar</button>
+        <button name="submit" type="submit" class="btn btn-primary">Registrar</button>
       </form>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
     <script src="http://code.jquery.com/jquery-1.6.1.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 <?php
-            global $tienda;
-            global $municipio;
+            $tienda = $_POST['Tienda'];
+            $municipio = $_POST['MunicipioID'];
 
-        $tienda = stripslashes($_REQUEST['Tienda']);
-        //escapes special characters in a string
-        $tienda = mysqli_real_escape_string($con, $tienda);
-        $municipio = stripslashes($_REQUEST['idMunicipio']);
-        $municipio = mysqli_real_escape_string($con, $municipio);
+            if (isset($_POST['submit'])) {
             mysqli_query($con,"INSERT INTO tienda(Tienda, idMunicipio) 
-            VALUES ('$_REQUEST[Tienda]', '$_REQUEST[idMunicipio]')")
+            VALUES ('$tienda', '$municipio')")
             or die ("No se pudo registrar" . mysqli_error($conexion));
             mysqli_close($con);
-
             echo "Tienda registrada con exito";
+            }
+
+        
  ?>  
   </body>
 </html>

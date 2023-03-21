@@ -16,14 +16,16 @@
       $rows = mysqli_num_rows($result);
       $string  = '';
       $tipousuario = '';
-      while ($row = mysqli_fetch_assoc($resultNombre)) {
+      while ($row = $result->fetch_assoc()) {
         $string .= $row['nombre'];
+        $id = $row['id'];
       }    
       if ($rows == 1) {
         session_start();
           $_SESSION['usuario'] = $username;
           $_SESSION['nombre'] = $string;
           $_SESSION['idTipoUsuario'] = $resultTu;
+          $_SESSION['id'] = $id;
           echo '<script type ="text/JavaScript">';  
         echo 'alert("Login Exitoso")';  
         echo '</script>';
