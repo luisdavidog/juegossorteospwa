@@ -10,19 +10,21 @@
 <body>
     <div class="container">
     <form action="login.php" class="form-floating mb-2" method="post" name="login">
-        <img src="assets/Password_Flatline.svg" alt="" srcset="" class="rounded mx-auto d-block">
+        <img src="assets/Slotmachine_Isometric.png" alt="" srcset="" class="rounded mx-auto d-block img-fluid">
 
-        <div class="form-floating mb-3">
+        <div class="mb-3">
         <label for="floatingInput">Correo electrónico</label>
-        <input name="usuario" type="email" class="form-control" id="floatingInput" placeholder="usuario@ejemplo.com">
+        <input name="usuario" type="email" class="form-control" id="floatingInput">
         </div>
 
-        <div class="form-floating mb-3">
+        <div class="mb-3">
         <label for="floatingPassword">Contraseña</label>
-        <input name="contra" type="password" class="form-control" id="floatingPassword" placeholder="Contraseña">
+        <input name="contra" type="password" class="form-control" id="floatingPassword">
         </div>
-         
+
+        <div class="offset-sm-3 col-sm-3 d-grid">
         <input type="submit" value="Inicio" name="submit" class="btn btn-primary"/>
+        </div>
   </form>
     </div>
 

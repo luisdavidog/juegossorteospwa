@@ -1,3 +1,7 @@
+<?php
+//include auth_session.php file on all user panel pages
+include("../../auth_session.php");
+?>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -7,12 +11,12 @@
 </head>
 <body>
 <div>
-<form class="container p-5" name="f">
+<form action="corte.php" method="post" class="container p-5" name="f">
   <h1>Corte y Distribucion</h1>
     <div class="form-group col-md-3 m-5">
       <label for="inputEmail4">Ingrese los gramos totales</label>
       <input type="number" name="gramostotales" value="0" onchange="cal()" onkeyup="cal()" />
-    </div>
+    </div> 
   <div class="col-md-3 m-5">
     <label for="validationCustom05">Gramos correspondientes a clientes</label>
     <input type="number" name="gramosclientes" value="0" readonly="readonly" />
@@ -35,22 +39,24 @@
     <input type="number" name="ingresopesos" value="0" readonly="readonly" />
     </div>
 
+    <input type="hidden" name="idTienda" value=<?php echo $_SESSION['id']; ?>>
+
+
     <div class="col-md-3 input-group mb-3">
       <label class="input-group-text" for="inputGroupFile01">Adjunte foto de kilometraje</label>
-      <input type="file" class="form-control" id="inputGroupFile01">
+      <input name="kilometraje" type="file" class="form-control" id="inputGroupFile01">
     </div>
 
-        <div class="col-md-3 input-group mb-3">
+    <div class="col-md-3 input-group mb-3">
       <label class="input-group-text" for="inputGroupFile02">Adjunte foto del estado del vehículo</label>
-      <input type="file" class="form-control" id="inputGroupFile02">
+      <input name="vehiculo" type="file" class="form-control" id="inputGroupFile02">
     </div>
+    
     <div class="col text-center">
-      <a class='btn btn-warning btn-lg m-3' href='../Principal/index.html' role='button'>Continuar</a>
+      <input name="submit" type="submit" class='btn btn-warning btn-lg m-3' value="Envíar">
     </div>
   </form>
-  <br>
-  <br>
-  <br>
+
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   <script src="http://code.jquery.com/jquery-1.6.1.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>

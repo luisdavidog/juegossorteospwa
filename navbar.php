@@ -1,17 +1,3 @@
-<?php
-//include auth_session.php file on all user panel pages
-include("../../auth_session.php");
-?>
-<!DOCTYPE html>
-
-<html>
-<head>
-  <title>Principal</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-</head>
-<body>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
   <div class="container-fluid text-white">
     <button class="navbar-toggler text-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
@@ -27,6 +13,14 @@ include("../../auth_session.php");
         <li class="nav-item">
           <a class="nav-link active text-white text-uppercase" aria-current="page" href="#">Bienvenido: <?php echo $_SESSION['nombre']; ?></a>
         </li>
+        <li class="nav-item">
+                    <a class="nav-link text-white text-uppercase" href="../../trabajadores/ComenzarRuta/">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark-plus-fill" viewBox="0 0 16 16">
+                            <path d="M9.293 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V4.707A1 1 0 0 0 13.707 4L10 .293A1 1 0 0 0 9.293 0zM9.5 3.5v-2l3 3h-2a1 1 0 0 1-1-1zM8.5 7v1.5H10a.5.5 0 0 1 0 1H8.5V11a.5.5 0 0 1-1 0V9.5H6a.5.5 0 0 1 0-1h1.5V7a.5.5 0 0 1 1 0z" />
+                        </svg>
+                        Crear nuevo reporte
+                    </a>
+                </li>
         <li class="nav-item">
         <a class="nav-link text-white text-uppercase" href="../../_regi5tr0/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
         <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
@@ -52,28 +46,11 @@ include("../../auth_session.php");
       </ul>
       <div>
       <a class="nav-link text-white text-uppercase" href="../../logout.php">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+  <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+</svg>
         Cerrar sesión</a></li>      </div>
     </div>
   </div>
 </nav>
-  <form class="container p-5">
-  <div class="col text-center">
-  <h1 class="text-uppercase">Inicio de ruta</h1>
-  <br>
-<h1 class="text-uppercase">Seleccione una de las siguientes opciones</h1>
-</div>
-<br>
-<img src="assets/Slotmachine_Two Color.png" alt="" srcset="" class="rounded mx-auto d-block">
-<div class="col text-center">
-  <a class="btn btn-primary btn-lg mt-3 mb-3 text-uppercase" href="../Reportes/index.php" role="button">Reportes</a>
-</div>
-<div class="col text-center">
-<a href="../ComenzarRuta" type="button" class="btn btn-primary btn-lg mt-3 mb-3 text-uppercase">Iniciar Ruta</a>
-</div>
-  <br>
-  <br>
-</form>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <script src="http://code.jquery.com/jquery-1.6.1.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-</body>
-  </html>

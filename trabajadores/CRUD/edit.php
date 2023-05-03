@@ -1,4 +1,4 @@
-<?php
+v  <?php
 $servername = "localhost";
 $username = "root";
 $password = "";
@@ -21,7 +21,6 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
     }
 
     $idTienda = $_GET["idTienda"];
-
     $sql = "SELECT * FROM tienda WHERE idTienda=$idTienda";
     $result = $connection->query($sql);
     $row = $result->fetch_assoc();

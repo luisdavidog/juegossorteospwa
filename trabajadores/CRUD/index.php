@@ -68,9 +68,9 @@ require('../../db.php');
                         <td>
                             <a class='btn btn-primary btn-sm' href='../CRUD/edit.php?idTienda=$row[idTienda]'>Editar</a>
                             <a class='btn btn-primary btn-sm' href='../CRUD/delete.php?idTienda=$row[idTienda]'>Eliminar</a>
-                            <a class='btn btn-warning btn-sm' href='../CorteDistribucion/index.html'>Corte</a>
+                            <a class='btn btn-warning btn-sm' href='../CorteDistribucion'>Corte</a>
                             </td>
-                    </tr>
+                    </tr>       
                     ";
                 }
                   }
@@ -79,7 +79,7 @@ require('../../db.php');
                 ?>
             </tbody>
         </table>
-        <a class='btn btn-warning btn-lg m-3' href='../CorteDistribucion/index.html' role='button'>Realizar corte y distrubucion</a>
+        <!--a class='btn btn-warning btn-lg m-3' href='../CorteDistribucion' role='button'>Realizar corte y distrubucion</a-->
     </div>
 </body>
 </html>
